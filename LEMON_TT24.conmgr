@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LEMON_TT24"
+  DTS:DTSID="{75763DCB-4109-4984-A048-75E87A1432DF}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LEMON\TT24;Initial Catalog=XFab_TT24;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-{75763DCB-4109-4984-A048-75E87A1432DF}LEMON_TT24;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

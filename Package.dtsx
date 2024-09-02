@@ -1,0 +1,2743 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/30/2024 10:22:12 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LEMON"
+  DTS:CreatorName="LEMON\User"
+  DTS:DTSID="{C30F9A84-278F-4C26-B9FD-4491692B0806}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="5129"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{8BC8DF45-9732-4E33-B8A7-4A9DC4B55E73}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ETL using Python"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{18E7ECF7-E599-4D33-8FC2-A713CA383B0C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL using Python">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ETL using Python\Execute Python ETL"
+          DTS:CreationName="Microsoft.ExecuteProcess"
+          DTS:Description="Execute ETL script"
+          DTS:DTSID="{3462E286-DD81-4B7D-B7F9-E5C2FD5F0D2A}"
+          DTS:ExecutableType="Microsoft.ExecuteProcess"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute Python ETL"
+          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecuteProcessData
+              Executable="C:\Users\User\Documents\Python Scripts\.venv\Scripts\python.exe"
+              Arguments="C:\Users\User\Documents\XFab_TT24\TT24_ETL.py" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Push Dim_Data into Tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{726677AE-A1FC-42C2-904D-B5F6F527324E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Push Dim_Data into Tables">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Push Dim_Data into Tables\Dim Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{ECD4A0D1-117F-4DC2-AFA0-B4C6FF719041}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dim Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Destination dim_company"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_company]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Connections[OleDbConnection]"
+                      connectionManagerID="{75763DCB-4109-4984-A048-75E87A1432DF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LEMON_TT24]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].Columns[FK_COMPANYID]"
+                          cachedDataType="r8"
+                          cachedName="FK_COMPANYID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[FK_CompanyID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[FK_COMPANYID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].Columns[DCOMPC]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="DCOMPC"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[DCOMPC]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[DCOMPC]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].Columns[COMPANYCODE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="COMPANYCODE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Company_Code]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYCODE]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].Columns[COMPANYNAME]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="COMPANYNAME"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Company_name]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYNAME]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].Columns[WAFERSIZE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="WAFERSIZE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Wafer_Size]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[WAFERSIZE]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[FK_CompanyID]"
+                          dataType="i4"
+                          name="FK_CompanyID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Company_Code]"
+                          dataType="nText"
+                          name="Company_Code" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Company_name]"
+                          dataType="nText"
+                          name="Company_name" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[DCOMPC]"
+                          dataType="nText"
+                          name="DCOMPC" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input].ExternalColumns[Wafer_Size]"
+                          dataType="nText"
+                          name="Wafer_Size" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Destination dim_currency"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Currency]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Connections[OleDbConnection]"
+                      connectionManagerID="{75763DCB-4109-4984-A048-75E87A1432DF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LEMON_TT24]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].Columns[FK_CURRENCYID]"
+                          cachedDataType="r8"
+                          cachedName="FK_CURRENCYID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[FK_CURRENCYID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FK_CURRENCYID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].Columns[CURRENCYCODE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CURRENCYCODE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY_CODE]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYCODE]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].Columns[CURRENCYDESCRIPTION]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CURRENCYDESCRIPTION"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY_DESCRIPTION]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYDESCRIPTION]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].Columns[FCEXCHRATE]"
+                          cachedDataType="r8"
+                          cachedName="FCEXCHRATE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[FC_EXCHRATE]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FCEXCHRATE]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[FK_CURRENCYID]"
+                          dataType="i4"
+                          name="FK_CURRENCYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY_CODE]"
+                          dataType="nText"
+                          name="CURRENCY_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[CURRENCY_DESCRIPTION]"
+                          dataType="nText"
+                          name="CURRENCY_DESCRIPTION" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input].ExternalColumns[FC_EXCHRATE]"
+                          dataType="r8"
+                          name="FC_EXCHRATE" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Destination dim_customer"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Connections[OleDbConnection]"
+                      connectionManagerID="{75763DCB-4109-4984-A048-75E87A1432DF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LEMON_TT24]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[FK_CUSTOMERID]"
+                          cachedDataType="r8"
+                          cachedName="FK_CUSTOMERID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[FK_CustomerID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[FK_COMPANYID]"
+                          cachedDataType="r8"
+                          cachedName="FK_COMPANYID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[FK_CompanyID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_COMPANYID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[COUNTRY]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="COUNTRY"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[COUNTRY]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[REGION]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="REGION"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[REGION]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[CUSTOMERCODE]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CUSTOMERCODE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Code]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERCODE]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[PARTYID]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="PARTYID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Party_ID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[PARTYID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[SERVICELEVEL]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SERVICELEVEL"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Service_Level]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[SERVICELEVEL]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].Columns[CUSTOMERNAME]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="CUSTOMERNAME"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Name]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERNAME]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[FK_CustomerID]"
+                          dataType="i4"
+                          name="FK_CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[FK_CompanyID]"
+                          dataType="i4"
+                          name="FK_CompanyID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Code]"
+                          dataType="nText"
+                          name="Customer_Code" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Party_ID]"
+                          dataType="nText"
+                          name="Party_ID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Service_Level]"
+                          dataType="nText"
+                          name="Service_Level" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          dataType="nText"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          dataType="nText"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Name]"
+                          dataType="nText"
+                          name="Customer_Name" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DB Destination dim_date"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Date]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Connections[OleDbConnection]"
+                      connectionManagerID="{75763DCB-4109-4984-A048-75E87A1432DF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LEMON_TT24]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[FK_DATEID]"
+                          cachedDataType="r8"
+                          cachedName="FK_DATEID"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[FK_DateID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[FK_DATEID]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[DATE]"
+                          cachedDataType="date"
+                          cachedName="DATE"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[DATE]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DATE]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[DAY]"
+                          cachedDataType="r8"
+                          cachedName="DAY"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[DAY]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DAY]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[MONTH]"
+                          cachedDataType="r8"
+                          cachedName="MONTH"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[MONTH]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTH]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[QUARTER]"
+                          cachedDataType="r8"
+                          cachedName="QUARTER"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[QUARTER]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTER]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[YEAR]"
+                          cachedDataType="r8"
+                          cachedName="YEAR"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[YEAR]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[MONTHYEAR]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="MONTHYEAR"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[MONTH_YEAR]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTHYEAR]" />
+                        <inputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].Columns[QUARTERYEAR]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="QUARTERYEAR"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[QUARTER_YEAR]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTERYEAR]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[FK_DateID]"
+                          dataType="i4"
+                          name="FK_DateID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[DATE]"
+                          dataType="dbTimeStamp"
+                          name="DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[DAY]"
+                          dataType="i4"
+                          name="DAY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[MONTH]"
+                          dataType="i4"
+                          name="MONTH" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[QUARTER]"
+                          dataType="i4"
+                          name="QUARTER" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[YEAR]"
+                          dataType="i4"
+                          name="YEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[MONTH_YEAR]"
+                          dataType="nText"
+                          name="MONTH_YEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input].ExternalColumns[QUARTER_YEAR]"
+                          dataType="nText"
+                          name="QUARTER_YEAR" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\dim_company"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="dim_company"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">COMPANY$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Connections[OleDbConnection]"
+                      connectionManagerID="{2D87DC8C-FC78-4B2A-BD08-BF82E31D8D94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Dimension Data]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYCODE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[COMPANYCODE]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYCODE]"
+                          name="COMPANYCODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYNAME]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[COMPANYNAME]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[COMPANYNAME]"
+                          name="COMPANYNAME"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[DCOMPC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[DCOMPC]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[DCOMPC]"
+                          name="DCOMPC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[WAFERSIZE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[WAFERSIZE]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].Columns[WAFERSIZE]"
+                          name="WAFERSIZE"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          dataType="r8"
+                          name="FK_COMPANYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[COMPANYCODE]"
+                          dataType="wstr"
+                          length="255"
+                          name="COMPANYCODE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[COMPANYNAME]"
+                          dataType="wstr"
+                          length="255"
+                          name="COMPANYNAME" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[DCOMPC]"
+                          dataType="wstr"
+                          length="255"
+                          name="DCOMPC" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output].ExternalColumns[WAFERSIZE]"
+                          dataType="wstr"
+                          length="255"
+                          name="WAFERSIZE" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[COMPANYCODE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[COMPANYCODE]"
+                          name="COMPANYCODE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[COMPANYNAME]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[COMPANYNAME]"
+                          name="COMPANYNAME" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[DCOMPC]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[DCOMPC]"
+                          name="DCOMPC" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[WAFERSIZE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[WAFERSIZE]"
+                          name="WAFERSIZE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="dim_currency"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">CURRENCY$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Connections[OleDbConnection]"
+                      connectionManagerID="{2D87DC8C-FC78-4B2A-BD08-BF82E31D8D94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Dimension Data]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FK_CURRENCYID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[FK_CURRENCYID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FK_CURRENCYID]"
+                          name="FK_CURRENCYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYCODE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[CURRENCYCODE]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYCODE]"
+                          name="CURRENCYCODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYDESCRIPTION]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[CURRENCYDESCRIPTION]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[CURRENCYDESCRIPTION]"
+                          name="CURRENCYDESCRIPTION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FCEXCHRATE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[FCEXCHRATE]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].Columns[FCEXCHRATE]"
+                          name="FCEXCHRATE"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[FK_CURRENCYID]"
+                          dataType="r8"
+                          name="FK_CURRENCYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[CURRENCYCODE]"
+                          dataType="wstr"
+                          length="255"
+                          name="CURRENCYCODE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[CURRENCYDESCRIPTION]"
+                          dataType="wstr"
+                          length="255"
+                          name="CURRENCYDESCRIPTION" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output].ExternalColumns[FCEXCHRATE]"
+                          dataType="r8"
+                          name="FCEXCHRATE" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[FK_CURRENCYID]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[FK_CURRENCYID]"
+                          name="FK_CURRENCYID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[CURRENCYCODE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[CURRENCYCODE]"
+                          name="CURRENCYCODE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[CURRENCYDESCRIPTION]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[CURRENCYDESCRIPTION]"
+                          name="CURRENCYDESCRIPTION" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[FCEXCHRATE]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[FCEXCHRATE]"
+                          name="FCEXCHRATE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="dim_customer"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">CUSTOMER$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Connections[OleDbConnection]"
+                      connectionManagerID="{2D87DC8C-FC78-4B2A-BD08-BF82E31D8D94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Dimension Data]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[FK_CUSTOMERID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]"
+                          name="FK_CUSTOMERID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERCODE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[CUSTOMERCODE]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERCODE]"
+                          name="CUSTOMERCODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[PARTYID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[PARTYID]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[PARTYID]"
+                          name="PARTYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[SERVICELEVEL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[SERVICELEVEL]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[SERVICELEVEL]"
+                          name="SERVICELEVEL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[COUNTRY]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[COUNTRY]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[COUNTRY]"
+                          name="COUNTRY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[REGION]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[REGION]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[REGION]"
+                          name="REGION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERNAME]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[CUSTOMERNAME]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].Columns[CUSTOMERNAME]"
+                          name="CUSTOMERNAME"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          name="FK_CUSTOMERID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          dataType="r8"
+                          name="FK_COMPANYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[CUSTOMERCODE]"
+                          dataType="wstr"
+                          length="255"
+                          name="CUSTOMERCODE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[PARTYID]"
+                          dataType="wstr"
+                          length="255"
+                          name="PARTYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[SERVICELEVEL]"
+                          dataType="wstr"
+                          length="255"
+                          name="SERVICELEVEL" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[COUNTRY]"
+                          dataType="wstr"
+                          length="255"
+                          name="COUNTRY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[REGION]"
+                          dataType="wstr"
+                          length="255"
+                          name="REGION" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output].ExternalColumns[CUSTOMERNAME]"
+                          dataType="wstr"
+                          length="255"
+                          name="CUSTOMERNAME" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[FK_CUSTOMERID]"
+                          name="FK_CUSTOMERID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[CUSTOMERCODE]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[CUSTOMERCODE]"
+                          name="CUSTOMERCODE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[PARTYID]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[PARTYID]"
+                          name="PARTYID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[SERVICELEVEL]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[SERVICELEVEL]"
+                          name="SERVICELEVEL" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[COUNTRY]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[COUNTRY]"
+                          name="COUNTRY" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[REGION]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[REGION]"
+                          name="REGION" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[CUSTOMERNAME]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[CUSTOMERNAME]"
+                          name="CUSTOMERNAME" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Dim_Data into Tables\Dim Data\dim_date"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="dim_date"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">DATE$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Connections[OleDbConnection]"
+                      connectionManagerID="{2D87DC8C-FC78-4B2A-BD08-BF82E31D8D94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Dimension Data]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[FK_DATEID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[FK_DATEID]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[FK_DATEID]"
+                          name="FK_DATEID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DATE]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[DATE]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DATE]"
+                          name="DATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DAY]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[DAY]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[DAY]"
+                          name="DAY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTH]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[MONTH]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTH]"
+                          name="MONTH"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTER]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[QUARTER]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTER]"
+                          name="QUARTER"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[YEAR]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[YEAR]"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[YEAR]"
+                          name="YEAR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTHYEAR]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[MONTHYEAR]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[MONTHYEAR]"
+                          name="MONTHYEAR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTERYEAR]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[QUARTERYEAR]"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].Columns[QUARTERYEAR]"
+                          name="QUARTERYEAR"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[FK_DATEID]"
+                          dataType="r8"
+                          name="FK_DATEID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[DATE]"
+                          dataType="date"
+                          name="DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[DAY]"
+                          dataType="r8"
+                          name="DAY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[MONTH]"
+                          dataType="r8"
+                          name="MONTH" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[QUARTER]"
+                          dataType="r8"
+                          name="QUARTER" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[YEAR]"
+                          dataType="r8"
+                          name="YEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[MONTHYEAR]"
+                          dataType="wstr"
+                          length="255"
+                          name="MONTHYEAR" />
+                        <externalMetadataColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output].ExternalColumns[QUARTERYEAR]"
+                          dataType="wstr"
+                          length="255"
+                          name="QUARTERYEAR" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[FK_DATEID]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[FK_DATEID]"
+                          name="FK_DATEID" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[DATE]"
+                          dataType="date"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[DATE]"
+                          name="DATE" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[DAY]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[DAY]"
+                          name="DAY" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[MONTH]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[MONTH]"
+                          name="MONTH" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[QUARTER]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[QUARTER]"
+                          name="QUARTER" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[YEAR]"
+                          dataType="r8"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[YEAR]"
+                          name="YEAR" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[MONTHYEAR]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[MONTHYEAR]"
+                          name="MONTHYEAR" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[QUARTERYEAR]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[QUARTERYEAR]"
+                          name="QUARTERYEAR" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output]"
+                  endId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Push Dim_Data into Tables\Dim Data\dim_company.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output1]"
+                  endId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Push Dim_Data into Tables\Dim Data\dim_currency.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output2]"
+                  endId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Push Dim_Data into Tables\Dim Data\dim_customer.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output3]"
+                  endId="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Push Dim_Data into Tables\Dim Data\dim_date.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Push Fact_Data into Staging Table"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EEEF7D4A-440C-4C00-868D-C4333FB73ABF}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Push Fact_Data into Staging Table">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Push Fact_Data into Staging Table\Fact Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A4FCD565-CB43-4E94-B274-7CF4AF283D16}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fact Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Fact Load"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Stage_Trade_Agreement]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Connections[OleDbConnection]"
+                      connectionManagerID="{75763DCB-4109-4984-A048-75E87A1432DF}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LEMON_TT24]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[FK_CUSTOMERID]"
+                          cachedDataType="r8"
+                          cachedName="FK_CUSTOMERID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_CUSTOMERID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[FK_CURRENCYID]"
+                          cachedDataType="r8"
+                          cachedName="FK_CURRENCYID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_CURRENCYID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CURRENCYID]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[FK_COMPANYID]"
+                          cachedDataType="r8"
+                          cachedName="FK_COMPANYID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_COMPANYID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_COMPANYID]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[ITEMID]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ITEMID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[ITEMID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[ITEMID]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[QUANTITY]"
+                          cachedDataType="r8"
+                          cachedName="QUANTITY"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUANTITY]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[PRICE]"
+                          cachedDataType="r8"
+                          cachedName="PRICE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[PRICE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[CONTRACTUAL_PRICE]"
+                          cachedDataType="r8"
+                          cachedName="CONTRACTUAL_PRICE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[CONTRACTUAL_PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[CONTRACTUAL_PRICE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[VOLUME_QUANTITY]"
+                          cachedDataType="r8"
+                          cachedName="VOLUME_QUANTITY"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[VOLUME_QUANTITY]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_QUANTITY]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[VOLUME_PRICE]"
+                          cachedDataType="r8"
+                          cachedName="VOLUME_PRICE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[VOLUME_PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_PRICE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[NOT_VOLUME_RELATED]"
+                          cachedDataType="r8"
+                          cachedName="NOT_VOLUME_RELATED"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[NOT_VOLUME_RELATED]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[NOT_VOLUME_RELATED]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[QUOTATIONID]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="QUOTATIONID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[QUOTATIONID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUOTATIONID]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[INACTIVE_FLAG]"
+                          cachedDataType="r8"
+                          cachedName="INACTIVE_FLAG"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[INACTIVE_FLAG]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[INACTIVE_FLAG]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[EXCHANGE_RATE]"
+                          cachedDataType="r8"
+                          cachedName="EXCHANGE_RATE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[EXCHANGE_RATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[EXCHANGE_RATE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[FROMDATE]"
+                          cachedDataType="date"
+                          cachedName="FROMDATE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FROM_DATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FROMDATE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[TODATE]"
+                          cachedDataType="date"
+                          cachedName="TODATE"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[TO_DATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[TODATE]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[MODIFIEDDATETIME]"
+                          cachedDataType="date"
+                          cachedName="MODIFIEDDATETIME"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED_DATE_TIME]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[MODIFIEDDATETIME]" />
+                        <inputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].Columns[RECID]"
+                          cachedDataType="r8"
+                          cachedName="RECID"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[RECID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[RECID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_CUSTOMERID]"
+                          dataType="i4"
+                          name="FK_CUSTOMERID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_CURRENCYID]"
+                          dataType="i4"
+                          name="FK_CURRENCYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FK_COMPANYID]"
+                          dataType="i4"
+                          name="FK_COMPANYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[ITEMID]"
+                          dataType="nText"
+                          name="ITEMID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY]"
+                          dataType="i4"
+                          name="QUANTITY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                          dataType="r8"
+                          name="PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[CONTRACTUAL_PRICE]"
+                          dataType="i4"
+                          name="CONTRACTUAL_PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[VOLUME_QUANTITY]"
+                          dataType="i4"
+                          name="VOLUME_QUANTITY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[VOLUME_PRICE]"
+                          dataType="i4"
+                          name="VOLUME_PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[NOT_VOLUME_RELATED]"
+                          dataType="i4"
+                          name="NOT_VOLUME_RELATED" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[QUOTATIONID]"
+                          dataType="nText"
+                          name="QUOTATIONID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[INACTIVE_FLAG]"
+                          dataType="i4"
+                          name="INACTIVE_FLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[EXCHANGE_RATE]"
+                          dataType="r8"
+                          name="EXCHANGE_RATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[FROM_DATE]"
+                          dataType="dbTimeStamp"
+                          name="FROM_DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[TO_DATE]"
+                          dataType="dbTimeStamp"
+                          name="TO_DATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[RECID]"
+                          dataType="nText"
+                          name="RECID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input].ExternalColumns[MODIFIED_DATE_TIME]"
+                          dataType="dbTimeStamp"
+                          name="MODIFIED_DATE_TIME" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Fact Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">'Source data$'</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Connections[OleDbConnection]"
+                      connectionManagerID="{90C30746-FC08-4D80-8A1B-716A5319BC33}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Trade Agreement Data]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_CUSTOMERID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CUSTOMERID]"
+                          name="FK_CUSTOMERID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CURRENCYID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_CURRENCYID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_CURRENCYID]"
+                          name="FK_CURRENCYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[ITEMID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[ITEMID]"
+                          length="255"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[ITEMID]"
+                          name="ITEMID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUANTITY]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[QUANTITY]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUANTITY]"
+                          name="QUANTITY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[PRICE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[PRICE]"
+                          name="PRICE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[CONTRACTUAL_PRICE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[CONTRACTUAL_PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[CONTRACTUAL_PRICE]"
+                          name="CONTRACTUAL_PRICE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_QUANTITY]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[VOLUME_QUANTITY]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_QUANTITY]"
+                          name="VOLUME_QUANTITY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_PRICE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[VOLUME_PRICE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[VOLUME_PRICE]"
+                          name="VOLUME_PRICE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[NOT_VOLUME_RELATED]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[NOT_VOLUME_RELATED]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[NOT_VOLUME_RELATED]"
+                          name="NOT_VOLUME_RELATED"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUOTATIONID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[QUOTATIONID]"
+                          length="255"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[QUOTATIONID]"
+                          name="QUOTATIONID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[INACTIVE_FLAG]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[INACTIVE_FLAG]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[INACTIVE_FLAG]"
+                          name="INACTIVE_FLAG"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[EXCHANGE_RATE]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[EXCHANGE_RATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[EXCHANGE_RATE]"
+                          name="EXCHANGE_RATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FROMDATE]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FROMDATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[FROMDATE]"
+                          name="FROMDATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[TODATE]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[TODATE]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[TODATE]"
+                          name="TODATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[RECID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[RECID]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[RECID]"
+                          name="RECID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[MODIFIEDDATETIME]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[MODIFIEDDATETIME]"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].Columns[MODIFIEDDATETIME]"
+                          name="MODIFIEDDATETIME"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          name="FK_CUSTOMERID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_CURRENCYID]"
+                          dataType="r8"
+                          name="FK_CURRENCYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FK_COMPANYID]"
+                          dataType="r8"
+                          name="FK_COMPANYID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[ITEMID]"
+                          dataType="wstr"
+                          length="255"
+                          name="ITEMID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[QUANTITY]"
+                          dataType="r8"
+                          name="QUANTITY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[PRICE]"
+                          dataType="r8"
+                          name="PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[CONTRACTUAL_PRICE]"
+                          dataType="r8"
+                          name="CONTRACTUAL_PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[VOLUME_QUANTITY]"
+                          dataType="r8"
+                          name="VOLUME_QUANTITY" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[VOLUME_PRICE]"
+                          dataType="r8"
+                          name="VOLUME_PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[NOT_VOLUME_RELATED]"
+                          dataType="r8"
+                          name="NOT_VOLUME_RELATED" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[QUOTATIONID]"
+                          dataType="wstr"
+                          length="255"
+                          name="QUOTATIONID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[INACTIVE_FLAG]"
+                          dataType="r8"
+                          name="INACTIVE_FLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[EXCHANGE_RATE]"
+                          dataType="r8"
+                          name="EXCHANGE_RATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[FROMDATE]"
+                          dataType="date"
+                          name="FROMDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[TODATE]"
+                          dataType="date"
+                          name="TODATE" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[RECID]"
+                          dataType="r8"
+                          name="RECID" />
+                        <externalMetadataColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output].ExternalColumns[MODIFIEDDATETIME]"
+                          dataType="date"
+                          name="MODIFIEDDATETIME" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_CUSTOMERID]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_CUSTOMERID]"
+                          name="FK_CUSTOMERID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_CURRENCYID]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_CURRENCYID]"
+                          name="FK_CURRENCYID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FK_COMPANYID]"
+                          name="FK_COMPANYID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ITEMID]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ITEMID]"
+                          name="ITEMID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[QUANTITY]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[QUANTITY]"
+                          name="QUANTITY" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[PRICE]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[PRICE]"
+                          name="PRICE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[CONTRACTUAL_PRICE]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[CONTRACTUAL_PRICE]"
+                          name="CONTRACTUAL_PRICE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[VOLUME_QUANTITY]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[VOLUME_QUANTITY]"
+                          name="VOLUME_QUANTITY" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[VOLUME_PRICE]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[VOLUME_PRICE]"
+                          name="VOLUME_PRICE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[NOT_VOLUME_RELATED]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[NOT_VOLUME_RELATED]"
+                          name="NOT_VOLUME_RELATED" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[QUOTATIONID]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[QUOTATIONID]"
+                          name="QUOTATIONID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[INACTIVE_FLAG]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[INACTIVE_FLAG]"
+                          name="INACTIVE_FLAG" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[EXCHANGE_RATE]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[EXCHANGE_RATE]"
+                          name="EXCHANGE_RATE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FROMDATE]"
+                          dataType="date"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[FROMDATE]"
+                          name="FROMDATE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[TODATE]"
+                          dataType="date"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[TODATE]"
+                          name="TODATE" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[RECID]"
+                          dataType="r8"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[RECID]"
+                          name="RECID" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[MODIFIEDDATETIME]"
+                          dataType="date"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[MODIFIEDDATETIME]"
+                          name="MODIFIEDDATETIME" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Push Fact_Data into Staging Table\Fact Data.Paths[Excel Source Output]"
+                  endId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{93D7E038-DF66-4928-B7C3-845E2B0A27B2}"
+      DTS:From="Package\Push Fact_Data into Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ETL using Python" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data"
+          TopLeft="42.0666627509728,18.1333327788777" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="241.6,128"
+          Size="241.6,171.2"
+          Id="Package\Push Dim_Data into Tables"
+          TopLeft="37.4999979510904,19.9333331947194" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Push Fact_Data into Staging Table\Fact Data"
+          TopLeft="33.9999950826171,24.4666645995114" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="252.8,115.2"
+          Size="252.8,158.4"
+          Id="Package\Push Fact_Data into Staging Table"
+          TopLeft="312.499982925754,39.8666663894388" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\ETL using Python\Execute Python ETL"
+          TopLeft="18.1259067521795,16.2074054922587" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="310.4,140"
+          Size="310.4,183.2"
+          Id="Package\ETL using Python"
+          TopLeft="332.499981833002,240.066664997273" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="438.899982925754,198.266666389439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.7999989072482,41.7999986078343"
+              Start="0,0"
+              End="48.7999989072482,34.2999986078343">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8999993039171" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.8999993039171"
+                    Point2="0,20.8999993039171"
+                    Point3="4,20.8999993039171" />
+                  <mssgle:LineSegment
+                    End="44.7999989072482,20.8999993039171" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.7999989072482,20.8999993039171"
+                    Point2="48.7999989072482,20.8999993039171"
+                    Point3="48.7999989072482,24.8999993039171" />
+                  <mssgle:LineSegment
+                    End="48.7999989072482,34.2999986078343" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\dim_company"
+          TopLeft="58.3333301461406,21.6666665159994" />
+        <NodeLayout
+          Size="215.2,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company"
+          TopLeft="38.3333312388924,100.533332634237" />
+        <EdgeLayout
+          Id="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output]"
+          TopLeft="129.933330146141,63.2666665159994">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.0000010927518,37.2666661182377"
+              Start="0,0"
+              End="16.0000010927518,29.7666661182377">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6333330591188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6333330591188"
+                    Point2="0,18.6333330591188"
+                    Point3="4,18.6333330591188" />
+                  <mssgle:LineSegment
+                    End="12.0000010927518,18.6333330591188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.0000010927518,18.6333330591188"
+                    Point2="16.0000010927518,18.6333330591188"
+                    Point3="16.0000010927518,22.6333330591188" />
+                  <mssgle:LineSegment
+                    End="16.0000010927518,29.7666661182377" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\dim_currency"
+          TopLeft="259.999985794227,20.7999998553594" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\dim_customer"
+          TopLeft="473.333307471542,27.7333331404792" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\dim_date"
+          TopLeft="53.3333304193286,188.933332019515" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency"
+          TopLeft="257.499985930821,153.399998933276" />
+        <EdgeLayout
+          Id="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output1]"
+          TopLeft="330.399985794227,62.3999998553594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.5000001365941,90.9999990779163"
+              Start="0,0"
+              End="33.5000001365941,83.4999990779163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4999995389581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4999995389581"
+                    Point2="0,45.4999995389581"
+                    Point3="4,45.4999995389581" />
+                  <mssgle:LineSegment
+                    End="29.5000001365941,45.4999995389581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5000001365941,45.4999995389581"
+                    Point2="33.5000001365941,45.4999995389581"
+                    Point3="33.5000001365941,49.4999995389581" />
+                  <mssgle:LineSegment
+                    End="33.5000001365941,83.4999990779163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer"
+          TopLeft="472.499974183739,99.6666659735971" />
+        <EdgeLayout
+          Id="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output2]"
+          TopLeft="545.333307471542,69.3333331404792">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.166666712198,30.3333328331179"
+              Start="0,0"
+              End="35.166666712198,22.8333328331179">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.166666416559" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.166666416559"
+                    Point2="0,15.166666416559"
+                    Point3="4,15.166666416559" />
+                  <mssgle:LineSegment
+                    End="31.166666712198,15.166666416559" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.166666712198,15.166666416559"
+                    Point2="35.166666712198,15.166666416559"
+                    Point3="35.166666712198,19.166666416559" />
+                  <mssgle:LineSegment
+                    End="35.166666712198,22.8333328331179" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date"
+          TopLeft="38.3333312388924,270.399998119672" />
+        <EdgeLayout
+          Id="Package\Push Dim_Data into Tables\Dim Data.Paths[Excel Source Output3]"
+          TopLeft="113.733330419329,230.533332019515">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.4000008195638,39.8666661001577"
+              Start="0,0"
+              End="21.4000008195638,32.3666661001577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9333330500788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9333330500788"
+                    Point2="0,19.9333330500788"
+                    Point3="4,19.9333330500788" />
+                  <mssgle:LineSegment
+                    End="17.4000008195638,19.9333330500788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.4000008195638,19.9333330500788"
+                    Point2="21.4000008195638,19.9333330500788"
+                    Point3="21.4000008195638,23.9333330500788" />
+                  <mssgle:LineSegment
+                    End="21.4000008195638,32.3666661001577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_company">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_currency">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source"
+          TopLeft="95.9999985694886,53.9999991953373" />
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load"
+          TopLeft="78.9999988228083,219.999996721745" />
+        <EdgeLayout
+          Id="Package\Push Fact_Data into Staging Table\Fact Data.Paths[Excel Source Output]"
+          TopLeft="163.199998569489,95.5999991953373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.7999997466803,124.399997526407"
+              Start="0,0"
+              End="-21.7999997466803,116.899997526407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.1999987632036" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.1999987632036"
+                    Point2="0,62.1999987632036"
+                    Point3="-4,62.1999987632036" />
+                  <mssgle:LineSegment
+                    End="-17.7999997466803,62.1999987632036" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.7999997466803,62.1999987632036"
+                    Point2="-21.7999997466803,62.1999987632036"
+                    Point3="-21.7999997466803,66.1999987632036" />
+                  <mssgle:LineSegment
+                    End="-21.7999997466803,116.899997526407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

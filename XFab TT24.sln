@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "XFab TT24", "XFab TT24.dtproj", "{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0119F294-85AF-4D4C-AA81-276D8B42748A}"
+	ProjectSection(SolutionItems) = preProject
+		Create_tables_n_relationships.sql = Create_tables_n_relationships.sql
+	EndProjectSection
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "XFab_TT24_ETL", "..\XFab Technical Interview 2024\XFab_TT24_ETL\XFab_TT24_ETL.pyproj", "{0ADEED32-996F-4574-94BF-556295FF0D6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Debug|Any CPU.ActiveCfg = Development
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Debug|Any CPU.Build.0 = Development
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Development|Any CPU.ActiveCfg = Development
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Development|Any CPU.Build.0 = Development
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Release|Any CPU.ActiveCfg = Development
+		{1829FB5B-B8E8-44D1-A738-6A008D7E2F83}.Release|Any CPU.Build.0 = Development
+		{0ADEED32-996F-4574-94BF-556295FF0D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADEED32-996F-4574-94BF-556295FF0D6F}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADEED32-996F-4574-94BF-556295FF0D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0ADEED32-996F-4574-94BF-556295FF0D6F} = {0119F294-85AF-4D4C-AA81-276D8B42748A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18AFCFE5-7496-4638-AA82-69327BBA1970}
+	EndGlobalSection
+EndGlobal
