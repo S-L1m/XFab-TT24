@@ -9,3 +9,6 @@ The "Push Fact_Data into Staging Table" has a Data Flow Task which takes the "Tr
 In the final container "ETL using Python" executes an XFab_TT24_ETL.py script. This script contains functions that connect to the localdb, (E)xtracts data from the Staging Table, (T)ransforms it, and (L)oads the clean data into the Trade_Agreement table.
 
 Finally, the "XFab_TT24.pbix" file is the PowerBI file that imports data from the Trade_Agreement table and visualizes the data based on CustomerID or CompanyName.
+![image](https://github.com/user-attachments/assets/3572132c-dc37-4fd7-80dd-8a3608d5e73c)
+![image](https://github.com/user-attachments/assets/ab12db18-937c-410c-a674-77583d8b02cd)
+
