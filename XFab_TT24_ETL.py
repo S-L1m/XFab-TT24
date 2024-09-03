@@ -2,6 +2,8 @@
 Upgrade ideas
 include LOGGING
 include configparser
+try using JOIN instead of str+str+replace
+Load to db in chunk or rows (chunking the load)
 
 """
 
@@ -39,7 +41,7 @@ def test_query(cursor, conn):
     #conn.close()
     print(test_df)
 
-def staging_table_prep(cursor, current_date):
+def staging_table_prep(cursor, current_date=None):
 
     # Extract data from Staging table
     staging_query = """SELECT * FROM Stage_Trade_Agreement"""
@@ -68,7 +70,9 @@ def staging_table_prep(cursor, current_date):
     transformed_df = pd.DataFrame(new_list)
     transformed_df["RECIDKEY"] = transformed_df["RECID"].astype(str) + transformed_df["FK_DATEID"].astype(str)
     transformed_df["RECIDKEY"] = transformed_df["RECIDKEY"].str.replace(".", "")
-    #transformed_df["MODIFIED_DATE_TIME"] = current_date
+    
+    if current_date != None:
+        transformed_df["MODIFIED_DATE_TIME"] = current_date
 
     return transformed_df
 
