@@ -11,8 +11,8 @@
   DTS:LocaleID="5129"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{8BC8DF45-9732-4E33-B8A7-4A9DC4B55E73}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{765ED590-9513-4746-A7AD-27C0A1CEB19C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -41,7 +41,7 @@
           <DTS:ObjectData>
             <ExecuteProcessData
               Executable="C:\Users\User\Documents\Python Scripts\.venv\Scripts\python.exe"
-              Arguments="C:\Users\User\Documents\XFab_TT24\TT24_ETL.py" />
+              Arguments="C:\Users\User\source\repos\XFab Technical Interview 2024\XFab_TT24_ETL\XFab_TT24_ETL.py" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -2314,6 +2314,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\ETL using Python\Execute Python ETL"
+          TopLeft="30.6407260847132,28.1185154301737" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="310.4,140"
+          Size="310.4,183.2"
+          Id="Package\ETL using Python"
+          TopLeft="474.166640759344,395.199997251828" />
+        <NodeLayout
           Size="121.6,41.6"
           Id="Package\Push Dim_Data into Tables\Dim Data"
           TopLeft="42.0666627509728,18.1333327788777" />
@@ -2323,7 +2334,7 @@
           PanelSize="241.6,128"
           Size="241.6,171.2"
           Id="Package\Push Dim_Data into Tables"
-          TopLeft="37.4999979510904,19.9333331947194" />
+          TopLeft="105.833327550855,71.0666661724779" />
         <NodeLayout
           Size="123.2,41.6"
           Id="Package\Push Fact_Data into Staging Table\Fact Data"
@@ -2334,44 +2345,33 @@
           PanelSize="252.8,115.2"
           Size="252.8,158.4"
           Id="Package\Push Fact_Data into Staging Table"
-          TopLeft="312.499982925754,39.8666663894388" />
-        <NodeLayout
-          Size="181.6,41.6"
-          Id="Package\ETL using Python\Execute Python ETL"
-          TopLeft="18.1259067521795,16.2074054922587" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="310.4,140"
-          Size="310.4,183.2"
-          Id="Package\ETL using Python"
-          TopLeft="332.499981833002,240.066664997273" />
+          TopLeft="488.333306651978,68.4666661905581" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="438.899982925754,198.266666389439">
+          TopLeft="614.733306651978,226.866666190558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="48.7999989072482,41.7999986078343"
+              EndConnector="14.6333341073657,168.33333106127"
               Start="0,0"
-              End="48.7999989072482,34.2999986078343">
+              End="14.6333341073657,160.83333106127">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.8999993039171" />
+                    End="0,80.1666655306351" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.8999993039171"
-                    Point2="0,20.8999993039171"
-                    Point3="4,20.8999993039171" />
+                    Point1="0,80.1666655306351"
+                    Point2="0,84.1666655306351"
+                    Point3="4,84.1666655306351" />
                   <mssgle:LineSegment
-                    End="44.7999989072482,20.8999993039171" />
+                    End="10.6333341073657,84.1666655306351" />
                   <mssgle:CubicBezierSegment
-                    Point1="44.7999989072482,20.8999993039171"
-                    Point2="48.7999989072482,20.8999993039171"
-                    Point3="48.7999989072482,24.8999993039171" />
+                    Point1="10.6333341073657,84.1666655306351"
+                    Point2="14.6333341073657,84.1666655306351"
+                    Point3="14.6333341073657,88.1666655306351" />
                   <mssgle:LineSegment
-                    End="48.7999989072482,34.2999986078343" />
+                    End="14.6333341073657,160.83333106127" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2560,46 +2560,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_company">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_currency">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_customer">
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2625,7 +2586,20 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_currency">
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_customer">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2651,7 +2625,33 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_date">
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\DB Destination dim_company">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_company">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push Dim_Data into Tables\Dim Data\dim_currency">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2714,7 +2714,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source">
+    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2727,7 +2727,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Load">
+    design-time-name="Package\Push Fact_Data into Staging Table\Fact Data\Fact Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

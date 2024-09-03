@@ -62,7 +62,7 @@ CREATE TABLE [XFab_TT24].[dbo].[Stage_Trade_Agreement]
 	[EXCHANGE_RATE] FLOAT NULL,
 	[FROM_DATE] DATETIME NULL,
 	[TO_DATE] DATETIME NULL,
-	[RECID] FLOAT NULL,
+	[RECID] BIGINT NULL,
 	[MODIFIED_DATE_TIME] DATETIME NULL,
 ) ;
 
@@ -85,7 +85,7 @@ CREATE TABLE [XFab_TT24].[dbo].[Trade_Agreement]
 	[EXCHANGE_RATE] FLOAT NULL,
 	[FROM_DATE] DATETIME NULL,
 	[TO_DATE] DATETIME NULL,
-	[RECID] FLOAT NULL,
+	[RECID] BIGINT NULL,
 	[MODIFIED_DATE_TIME] DATETIME NULL,
 ) ;
 
@@ -107,6 +107,12 @@ ADD CONSTRAINT [FK_CompanyID] FOREIGN KEY ([FK_CompanyID])
 REFERENCES [dbo].[Dim_Company] ([FK_CompanyID])
 GO
 
+-- Add relationship between Trade_Agreement and dim_date tables
+ALTER TABLE [dbo].[Trade_Agreement] WITH NOCHECK
+ADD CONSTRAINT [FK_DATEID] FOREIGN KEY ([FK_DATEID])
+REFERENCES [dbo].[Dim_Date] ([FK_DateID])
+GO
+
 drop table [dbo].[Dim_Company];
 drop table [dbo].[Dim_Date];
 drop table [dbo].[Dim_Currency];
@@ -117,3 +123,4 @@ drop table [dbo].[Trade_Agreement];
 ALTER TABLE [dbo].[trade_agreement] DROP CONSTRAINT [FK_CompanyID]
 ALTER TABLE [dbo].[trade_agreement] DROP CONSTRAINT [FK_CustomerID]
 ALTER TABLE [dbo].[trade_agreement] DROP CONSTRAINT [FK_CurrencyID]
+ALTER TABLE [dbo].[trade_agreement] DROP CONSTRAINT [FK_DATEID]
